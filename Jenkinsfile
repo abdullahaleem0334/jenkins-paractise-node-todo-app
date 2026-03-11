@@ -289,7 +289,13 @@ pipeline {
         always {
             // Workspace clean karo — disk space bachao
             echo "Workspace clean ho raha hai..."
-            cleanWs()
+            cleanWs() 
+            app.get('/health', (req, res) => {
+    res.status(200).json({ 
+        status: 'ok',
+        version: '1.0.1'
+    })
+})
         }
     }
 
