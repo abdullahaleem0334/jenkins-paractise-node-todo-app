@@ -295,7 +295,16 @@ pipeline {
         status: 'ok',
         version: '1.0.1'
     })
-})
+}) 
+            stage('Archive Artifact') {
+    steps {
+        archiveArtifacts(
+            artifacts: "healthtune-${BUILD_NUMBER}.tar.gz",
+            fingerprint: true
+        )
+        echo "Jenkins mein save ho gaya!"
+    }
+}
         }
     }
 
